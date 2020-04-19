@@ -1,0 +1,40 @@
+int led_Amarillo = 13;
+int led_Azul = 12;
+int led_Rojo = 8;
+int led_Verde = 2;
+const int BOTON = 7; 
+int val = 0; 
+int state = 0; 
+int old_val = 0; 
+
+void setup() {
+  
+pinMode(led_Amarillo, OUTPUT);
+pinMode(led_Azul, OUTPUT);
+pinMode(led_Rojo, OUTPUT);
+pinMode(led_Verde, OUTPUT);
+}
+
+void loop(){
+val= digitalRead(BOTON); 
+  
+if ((val == HIGH) && (old_val == LOW)){
+state=1-state;
+delay(10);
+}
+old_val = val; 
+if (state==1){
+digitalWrite(led_Amarillo,HIGH); // encender Amarillo verde
+delay(2000); // mantener por 2 segundos
+digitalWrite(led_Amarillo,LOW); // apagar LED Amarillo
+digitalWrite(led_Azul,HIGH); // encender LED Azul
+delay(2000); // mantener por 2 segundos
+digitalWrite(led_Azul,LOW); // apagar LED Azul
+digitalWrite(led_Rojo,HIGH); // encender LED rojo
+delay(2000);  // mantener por 2 segundos
+digitalWrite(led_Rojo,LOW); // apagar LED  rojo
+digitalWrite(led_Verde,HIGH); // encender LED Verde
+delay(2000); // mantener por 2 segundos
+digitalWrite(led_Verde,LOW); // apagar LED Verde
+}
+}
